@@ -1,16 +1,16 @@
-class User {
-    constructor(mongoose) {
-        this.schema = mongoose.Schema({
+const MongoEntity = require('./MongoEntity');
+
+class User extends MongoEntity {
+    constructor(dbName, collectionName) {
+        const schema = {
             name: {
                 type: String,
                 required: true,
                 unique: true
             },
-            born: {
-                type: String
-            }
-        });
-        this.model = mongoose.model('users', this.schema);
+            born: Date
+        };
+        super(dbName, collectionName, schema);
     }
 
     get(id, res) {
