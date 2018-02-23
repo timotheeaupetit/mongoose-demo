@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // Routes
-const userRouter = require('./routes/userRouter');
-// const publicationRouter = require('./routes/publicationRouter');
+// const userRouter = require('./routes/userRouter');
+const publicationRouter = require('./routes/publicationRouter');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,8 +23,8 @@ app.use(function(req, res, next) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Bind routes with routers
-app.use('/users', userRouter);
-// app.use('/publications', publicationRouter);
+// app.use('/users', userRouter);
+app.use('/publications', publicationRouter);
 
 mongoose.set('debug', true);
 
